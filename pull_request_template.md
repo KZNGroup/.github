@@ -3,6 +3,11 @@ Relevant JIRA ticket: [KZN-XXX](https://kzngroup.atlassian.net/browse/KZN-XXX)
 
 ## Description of Changes
 
+
+## Documentation for Review
+
+<!--- Provide a link to the newly created or updated documentation relevant to this PR -->
+
 ## Change type
 
 <!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
@@ -13,7 +18,7 @@ Relevant JIRA ticket: [KZN-XXX](https://kzngroup.atlassian.net/browse/KZN-XXX)
 ## Checklist
 
 <!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
-<!--- If one of the below isn't complete, please go and polish that off before creating a PR. -->
+<!--- If one of the below isn't complete (and should be), please go and polish that off before creating a PR. -->
 - [ ] Linting has been applied to my code.
 - [ ] Relevant documentation has been updated.
 - [ ] Tests have been written where possible.
