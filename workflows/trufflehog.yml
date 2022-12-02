@@ -1,0 +1,39 @@
+name: TruffleHog Committed Credentials
+on:
+  push:
+  pull_request:
+jobs:
+  TruffleHog:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: TruffleHog OSS
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args:  --only-verified
+      - name: Slack send 
+        if: ${{ failure() }}
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          channel-id: C773NFUBU
+          payload: |
+            {
+              "text": "GitHub Committing Credentials",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "******************** \n WARNING! Credentials are being committed in the following repository: \n ${{ github.event.pull_request.html_url || github.event.head_commit.url }} \n \n See the TruffleHog output at: ${{github.event.repository.url}}/actions \n ******************** \n"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.TRUFFLEHOG }}
