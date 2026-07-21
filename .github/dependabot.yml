@@ -1,6 +1,13 @@
 version: 2
 updates:
-- package-ecosystem: github-actions
-  directory: /
-  schedule:
-    interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Australia/Perth
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+      - github-actions
